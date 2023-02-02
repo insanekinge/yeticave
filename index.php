@@ -143,7 +143,15 @@ $product_list = [
                     <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?php echo $product['name']; ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
-                            <span class="lot__amount"><?php echo $product['price']; ?></span>
+                            <span class="lot__amount"><?php 
+
+                            if($product['price'] > 1000) {
+                                echo number_format(($product['price']), 0, '  ' , ' ');
+                            }else{
+                                echo ceil($product['price']);
+                            }
+                            
+                            ?></span>
                             <span class="lot__cost">цена<b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
