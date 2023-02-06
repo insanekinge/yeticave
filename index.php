@@ -1,5 +1,4 @@
 <?php
-
 $is_auth = rand(0, 1);
 $title = "Главная";
 $user_name = 'Slava'; // укажите здесь ваше имя

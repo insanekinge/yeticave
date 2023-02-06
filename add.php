@@ -24,7 +24,7 @@
     <a class="main-header__add-lot button" href="add-lot.html">Добавить лот</a>
     <nav class="user-menu">
       <div class="user-menu__logged">
-        <p>#user_name#</p>
+        <p><?php echo $data['user_name'] ?></p>
         <a class="user-menu__bets" href="my-bets.html">Мои ставки</a>
         <a class="user-menu__logout" href="#">Выход</a>
       </div>
@@ -55,7 +55,7 @@
         </li>
       </ul>
     </nav>
-    <form class="form form--add-lot container form--invalid" action="https://echo.htmlacademy.ru" method="post"> <!-- form--invalid -->
+    <form class="form form--add-lot container form--invalid" action="add.php" method="post"> <!-- form--invalid -->
       <h2>Добавление лота</h2>
       <div class="form__container-two">
         <div class="form__item form__item--invalid"> <!-- form__item--invalid -->
