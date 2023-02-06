@@ -1,3 +1,6 @@
+<?php
+header('HHTP/1.1 404 Not Found');
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,8 +8,6 @@
     <title>DC Ply Mens 2016/2017 Snowboard</title>
     <link href="../css/normalize.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/404.css" rel="stylesheet">
-
 </head>
 <body>
 

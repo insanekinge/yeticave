@@ -32,7 +32,7 @@
             <h2>Открытые лоты</h2>
         </div>
         <ul class="lots__list">
-            <?php foreach($data['product_list'] as $product) { ?>
+            <?php foreach($data['product_list'] as $key => $product) { ?>
             <!--заполните этот список из массива с товарами-->
             <li class="lots__item lot">
                 <div class="lot__image">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="lot__info">
                     <span class="lot__category"><?php echo $product['category']; ?></span>
-                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?php echo $product['name']; ?></a></h3>
+                    <h3 class="lot__title"><a class="text-link" href="lot.php?id=<?php echo $key ?>"><?php echo $product['name']; ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount"><?php 
@@ -55,7 +55,7 @@
                             <span class="lot__cost">цена<b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
-                            12:23
+                            <? echo timeLeft('%H:%M:%S'); ?>
                         </div>
                     </div>
                 </div>
