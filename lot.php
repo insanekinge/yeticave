@@ -1,45 +1,47 @@
 <?php
-require_once('./functions.php');
-require_once('./data.php');
-// echo '<pre>';
+// подключаем библиотеку функций
+require 'functions.php';
 
-// var_dump($_GET);
-// var_dump($product_list[$_GET['id']]);
-// echo '</pre>';
+// подключаем данные
+require 'data.php';
 
-$product = null;
-
-if (isset($_GET['index'])) {
-    $product = $products[$_GET['index']];
-
-    if (isset($_COOKIE["products_hist"])) {
-        $products_hist = json_decode($_COOKIE["products_hist"]);
-        array_push($products_hist, $_GET['index']);
-        $products_hist = array_unique($products_hist);
-        setcookie("products_hist", json_encode($products_hist), strtotime("+ 30 days"), "/");
-    } else {
-        $products_hist = [$_GET['index']];
-        setcookie("products_hist", json_encode($products_hist), strtotime("+ 30 days"), "/");
-    }
+// получаем идентификатор лота
+$id = $_GET['id'];
+if (!$lots_list[$id]) {
+    header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+    exit;
 }
 
-if (!$product) {
-    http_response_code(404);
-}
 
-$page_content = include_template('./templates/lot.php', [
-    'categories' => $categories,
-    'product' => $product,
-    'time_to_end' => get_time_to_end(),
-]);
+// ставки пользователей
+$bets = [
+    ['name' => 'Иван', 'price' => 11500, 'ts' => strtotime('-' . rand(1, 50) .' minute')],
+    ['name' => 'Константин', 'price' => 11000, 'ts' => strtotime('-' . rand(1, 18) .' hour')],
+    ['name' => 'Евгений', 'price' => 10500, 'ts' => strtotime('-' . rand(25, 50) .' hour')],
+    ['name' => 'Семён', 'price' => 10000, 'ts' => strtotime('last week')]
+];
+$price = 11500; // текущая цена
+$bet_step = 500; // шаг ставки
 
-$layout_content = include_template('./templates/layout.php', [
-    'page_title' => 'YetiCave - Страница товара',
-    'is_auth' => $is_auth,
-    'user_name' => $user_name,
-    'user_avatar' => $user_avatar,
-    'page_content' => $page_content,
-    'categories' => $categories
-]);
+// настройки скрипта
+$lot_data = [
+    'id' => $id,
+    'categories_list' => $categories_list,
+    'lots_list' => $lots_list,
+    'bets' => $bets,
+    'price' => $price,
+    'expire' => strtotime('tomorrow midnight'),
+    'bet_min' => $price + $bet_step,
+    'img' => true,
+    'real' => true
+];
+$layout_data['title'] = $lots_list[$id]['name'];
 
-print($layout_content);
+
+// получаем HTML-код тела страницы
+$layout_data['content'] = include_template('lot', $lot_data);
+
+// получаем итоговый HTML-код
+$layout = include_template('layout', $layout_data);
+
+print ($layout);

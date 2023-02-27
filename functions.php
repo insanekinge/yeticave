@@ -1,30 +1,45 @@
 <?php
-function include_template($tempalate_path, $data = null){
-    if (!file_exists($tempalate_path)) {
-        return '';
+session_start();
+// шаблонизатор
+function include_template($template_name, $data) {
+    $template_file = 'templates/' . $template_name . '.php';
+    if (file_exists($template_file)) {
+        ob_start();
+        include($template_file);
+        $output = ob_get_clean();
     }
-    ob_start();
-    extract($data);
-    require_once($tempalate_path);
-    return ob_get_clean();
-}
-function format_price($price)
-{
-    $result = ceil($price);
-    if ($result <= 1000) {
-        return $result;
+    else {
+        $output = '';
     }
-    return number_format($result, 0, '.', ' ');
+    return $output;
 }
 
-function get_time_to_end()
-{
-    date_default_timezone_set('Europe/Minsk');
-    $ts_to_end = strtotime('tomorrow') - strtotime('now');
-    $hours_to_end = floor($ts_to_end / 3600);
-    $minutes_to_end = floor(($ts_to_end - ($hours_to_end * 3600)) / 60);
-    return $hours_to_end . ':' . $minutes_to_end;
+// функция для представления времени в относительном формате
+function time_relative($ts) {
+    $time = $_SERVER['REQUEST_TIME'];
+    $time_diff = $time - $ts;
+    if ($time_diff > 86400) { 
+        $time_return = date('d.m.Y в H:i', $ts);
+    }
+    else if ($time_diff > 3600) { // разница от часа до суток
+        $time_return = (date('G', $time) - date('G', $ts)) . ' часов назад';
+    }
+    else { // разница менее часа
+        $time_return = (intval(date('i', $time)) - intval(date('i', $ts))) . ' минут назад';
+    }
+    return $time_return;
 }
+// функция для подсчета времени действия лота
+function remaining($ts) {
+    $time_diff = $ts - $_SERVER['REQUEST_TIME'];
+    $h = floor($time_diff / 3600);
+    $min_ts = $time_diff - $h * 3600;
+    $min = floor($min_ts / 60);
+    $s = $time_diff - $h * 3600 - $min * 60;
+    return sprintf('%02d:%02d:%02d', $h, $min, $s);
+}
+
+
 // function is_date_valid(string $date) : bool {
 //   $format_to_check = 'Y-m-d';
 //   $dateTimeObj = date_create_from_format($format_to_check, $date);

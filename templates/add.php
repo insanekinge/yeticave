@@ -8,8 +8,7 @@
     </ul>
 </nav>
 <?php
-$classname_invalid = isset($errors) ? 'form--invalid' : '';
-?>
+$classname_invalid = isset($errors) ? 'form--invalid' : '';?>
 <form class="form form--add-lot container <? echo $classname_invalid ?>" action="add.php" method="POST" enctype="multipart/form-data">
     <h2>Добавление лота</h2>
     <div class="form__container-two">
@@ -30,7 +29,7 @@ $classname_invalid = isset($errors) ? 'form--invalid' : '';
             <label for="category">Категория</label>
             <select id="category" name="category">
                 <option value="" <? echo $selected ?>>Выберите категорию</option>
-                <?php foreach ($categories as $value) :
+                <?php foreach ($categories as $value) : 
                     if ($product['category'] === $value) :
                 ?>
                         <option value="<? echo $value ?>" <? echo $selected ?>><? echo $value ?></option>
