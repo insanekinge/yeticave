@@ -1,3 +1,6 @@
+<?php
+header('HHTP/1.1 404 Not Found');
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,8 +8,6 @@
     <title>DC Ply Mens 2016/2017 Snowboard</title>
     <link href="../css/normalize.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/404.css" rel="stylesheet">
-
 </head>
 <body>
 
@@ -16,7 +17,7 @@
         <div class="main-header__container container">
             <h1 class="visually-hidden">YetiCave</h1>
             <a class="main-header__logo" href="index.html">
-                <img src="../img/logo.svg" width="160" height="39" alt="Логотип компании YetiCave">
+                <img src="img/logo.svg" width="160" height="39" alt="Логотип компании YetiCave">
             </a>
             <form class="main-header__search" method="get" action="https://echo.htmlacademy.ru" autocomplete="off">
                 <input type="search" name="search" placeholder="Поиск лота">
@@ -92,7 +93,7 @@
     </nav>
     <div class="main-footer__bottom container">
         <div class="main-footer__copyright">
-            <p>© 2019, YetiCave</p>
+            <p>© 2023, YetiCave</p>
             <p>Интернет-аукцион сноубордического и горнолыжного снаряжения</p>
         </div>
         <div class="main-footer__social social">
