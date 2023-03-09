@@ -24,6 +24,13 @@ $login_data = [
     'categories_list' => $categories_list
 ];
 $pass_hash = '';
+
+$users = require 'userdata.php';
+foreach ($users as $user){
+    if($user['email'] == $mail)
+        $pass_hash = $user['password'];
+}
+
 if ($mail) {
     foreach ($users as $k => $val) {
         if ($val['email'] == $mail) {
@@ -61,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = true;
     }
     if ($error) {
-        $login_data['invalid'] = ' form--invalid';
+        $login_data['invalid'] = 'form--invalid';
         $login_data['error'] = 'Пожалуйста, исправьте ошибки в форме.';
         $layout_data['title'] = 'Ошибка авторизации';
         $_POST = [];
@@ -73,8 +80,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 
-$layout_data = include_template('./templates/login.php', $login_data);
+// получаем HTML-код тела страницы
+$layout_data['content'] = include_template('login', $login_data);
 
-$layout_content = include_template('./templates/login.php', $layout_data);
+// получаем итоговый HTML-код
+$layout = include_template('layout', $layout_data);
 
 print ($layout);

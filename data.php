@@ -4,6 +4,11 @@
 // устанавливаем часовой пояс в Московское время
 date_default_timezone_set('Europe/Moscow');
 
+$time = $_SERVER['REQUEST_TIME'];
+$expires = $time + 60*60*24*30;
+
+$name = $_SESSION['name'];
+
 // подключаем данные лотов
 require 'data_lots.php';
 
@@ -13,13 +18,11 @@ $layout_data = [
     'user_name' => 'Slava',
     'user_avatar' => 'img/',
     'categories_list' => $categories_list,
-    'is_auth' => (bool) rand(0, 1),
     'index_link' => 'href="/" '
 ];
 
 // данные главной страницы
 $index_data = [
     'categories_list' => $categories_list,
-    // список объявлений (вынесли в отдельный файл в module4-task1)
     'announcements_list' => $lots_list
 ];
