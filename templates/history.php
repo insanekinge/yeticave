@@ -1,3 +1,8 @@
+<pre>
+    <?php
+    var_dump($data);
+    ?>
+</pre>
 <div class="container">
     <section class="lots">
         <?php if (isset($data)) : ?>
@@ -16,7 +21,7 @@
                                     <span class="lot__cost"><?= $value['price']; ?><b class="rub">р</b></span>
                                 </div>
                                 <div class="lot__timer timer">
-                                <?= remaining($data['remaining']); ?>                           
+                                <?= remaining($value['remaining']); ?>
                                 </div>
                             </div>
                         </div>
@@ -27,9 +32,9 @@
     <ul class="pagination-list">
         <li class="pagination-item pagination-item-prev"><a>Назад</a></li>
         <li class="pagination-item pagination-item-active"><a>1</a></li>
-        <li class="pagination-item"><a href="#">2</a></li>
-        <li class="pagination-item"><a href="#">3</a></li>
-        <li class="pagination-item"><a href="#">4</a></li>
+        <li class="pagination-item pagination-item-active"><a href="#">2</a></li>
+        <li class="pagination-item pagination-item-active"><a href="#">3</a></li>
+        <li class="pagination-item pagination-item-active"><a href="#">4</a></li>
         <li class="pagination-item pagination-item-next"><a href="#">Вперед</a></li>
     </ul>
 <?php else : ?>

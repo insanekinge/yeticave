@@ -44,7 +44,7 @@ foreach ($fields as $k => $val) {
     }
     if ($error) {
         $error_count++;
-        $add_data[$k]['invalid'] = ' form__item--invalid';
+        $add_data[$k]['invalid'] = 'form__item--invalid';
         $add_data[$k]['error'] = $val;
     }
     else {

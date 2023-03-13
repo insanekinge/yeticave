@@ -16,6 +16,7 @@ $lots_list = [
         'category' => 'boards',
         'price' => 10999,
         'picture' => 'img/lot-1.jpg',
+        'remaining' => strtotime('tomorrow midnight'),
         'description' => 'Описание временно отсутствует.'
     ],
     [
@@ -23,6 +24,7 @@ $lots_list = [
         'category' => 'boards',
         'price' => 159999,
         'picture' => 'img/lot-2.jpg',
+        'remaining' => strtotime('tomorrow midnight'),
         'description' => 'Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив снег мощным щелчком и четкими дугами. Стекловолокно Bi-Ax, уложенное в двух направлениях, наделяет этот снаряд отличной гибкостью и отзывчивостью, а симметричная геометрия в сочетании с классическим прогибом кэмбер позволит уверенно держать высокие скорости. А если к концу катального дня сил совсем не останется, просто посмотрите на Вашу доску и улыбнитесь, крутая графика от Шона Кливера еще никого не оставляла равнодушным.'
     ],
     [
@@ -30,6 +32,7 @@ $lots_list = [
         'category' => 'attachment',
         'price' => 8000,
         'picture' => 'img/lot-3.jpg',
+        'remaining' => strtotime('tomorrow midnight'),
         'description' => 'Описание временно отсутствует.'
     ],
     [
@@ -37,6 +40,7 @@ $lots_list = [
         'category' => 'boots',
         'price' => 10999,
         'picture' => 'img/lot-4.jpg',
+        'remaining' => strtotime('tomorrow midnight'),
         'description' => 'Описание временно отсутствует.'
     ],
     [
@@ -44,6 +48,7 @@ $lots_list = [
         'category' => 'clothing',
         'price' => 7500,
         'picture' => 'img/lot-5.jpg',
+        'remaining' => strtotime('tomorrow midnight'),
         'description' => 'Описание временно отсутствует.'
     ],
     [
@@ -51,6 +56,7 @@ $lots_list = [
         'category' => 'other',
         'price' => 5400,
         'picture' => 'img/lot-6.jpg',
+        'remaining' => strtotime('tomorrow midnight'),
         'description' => 'Описание временно отсутствует.'
     ]
 ];

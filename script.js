@@ -5,3 +5,4 @@ flatpickr('#lot-date', {
   dateFormat: "Y-m-d",
   locale: "ru"
 });
+

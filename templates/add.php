@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <form class="form form--add-lot<?= $data['invalid']; ?> container" action="add.php" method="post" enctype="multipart/form-data">
     <h2>Добавление лота</h2>
     <div class="form__container-two">
@@ -30,14 +31,14 @@
         <div class="preview">
             <button class="preview__remove" type="button">x</button>
             <div class="preview__img">
-                <img src="img/lot-image.jpg" width="113" height="113" alt="Изображение лота">
             </div>
         </div>
         <div class="form__input-file">
-            <input class="visually-hidden" type="file" id="photo2" name="file" value="">
-            <label for="photo2">
-                <span>+ Добавить</span>
-            </label>
+            <label for="pct">
+                <input class="visually-hidden" type="file" id="pct" name="file" value="">
+                <img src="img/lot-7.jpg" width="113" height="113" alt="Изображение лота">
+                <span> Добавить</span>
+            </label>  
         </div>
     </div>
     <div class="form__container-three">
