@@ -1,34 +1,33 @@
 <?php
-// подключаем библиотеку функций
-require 'functions.php';
-// подключаем данные
-require 'data.php';
+require 'app/common.php';
+// общее количество лотов
+$result = mysqli_query($link, 'SELECT COUNT(*) AS cnt FROM lots');
+$lots_count = mysqli_fetch_assoc($result)['cnt'];
 
+// настройки пагинации
+require 'app/paginator.php';
+// получаем список лотов
+$lots_query = 'SELECT id, name, price, expire_ts, img, category_id FROM lots LIMIT '
+. $page_items . ' OFFSET ' . $offset;
+require 'app/lots_list.php';
 
-// записать в эту переменную оставшееся время в этом формате (ЧЧ:ММ)
-$lot_time_remaining = "00:00";
-
-// временная метка для полночи следующего дня
-$tomorrow = strtotime('tomorrow midnight');
-// временная метка для настоящего времени
-$now = strtotime('now');
-// временная метка оставшегося до полуночи времени
-$lot_time_remaining__ts = $tomorrow - $now;
-// оставшееся время в часах
-$lot_time_remaining__hours = floor($lot_time_remaining__ts / 3600);
-// временная метка для минут неполного часа
-$lot_time_remaining__min_ts = $lot_time_remaining__ts - $lot_time_remaining__hours * 3600;
-// число минут неполного часа
-$lot_time_remaining__min = floor($lot_time_remaining__min_ts / 60);
-// оставшееся время в формате ЧЧ:ММ
-$lot_time_remaining = sprintf('%02d:%02d', $lot_time_remaining__hours, $lot_time_remaining__min);
-// добавляем оставшееся время к настройкам шаблона вывода
-$index_data['lot_time_remaining'] = $lot_time_remaining;
 // получаем HTML-код тела страницы
+$index_data = [
+    'categories_list' => $categories_list,
+    'announcements_list' => $lots_list,
+    'header' => 'Открытые лоты',
+    'categories' => $layout_data['categories']
+];
+if ($lots_count > $page_items) {
+    $index_data['pagination'] = $pages;
+    $index_data['script'] = 'index';
+    $index_data['active'] = $cur_page;
+    $index_data['query_str'] = '';
+}
 $layout_data['content'] = include_template('index', $index_data);
 
 // получаем итоговый HTML-код
+$layout_data['title'] = 'Главная';
+$layout_data['main_container'] = '';
 $layout_data['index_link'] = '';
-$layout = include_template('layout', $layout_data);
-
-print ($layout);
+print(layout($layout_data, $query_errors));

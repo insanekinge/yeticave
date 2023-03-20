@@ -20,18 +20,18 @@
             <a class="main-header__add-lot button" href="add.php">Добавить лот</a>
 
             <nav class="user-menu">
-                <?php if (isset($_SESSION['name'])) : ?>
-                <!-- <div class="user-menu__image">
+                <?php if (isset($_SESSION['user']['id'])) : ?>
+                <div class="user-menu__image">
                     <img src="<?= $data['user_avatar']?>" width="40" height="40" alt="Пользователь">
-                </div> -->
+                </div>
                 <div class="user-menu__logged">
-                    <p><?=$_SESSION['name']?></p>
+                    <p><?=$_SESSION['user']['name']?></p>
                     <p><a href="logout.php">Выход</a></p>
                 </div>
                 <?php else : ?>
                 <ul class="user-menu__list">
                     <li class="user-menu__item">
-                        <a href="#">Регистрация</a>
+                        <a href="sign-up.php">Регистрация</a>
                     </li>
                     <li class="user-menu__item">
                         <a href="login.php">Вход</a>
@@ -41,18 +41,10 @@
             </nav>
         </div>
     </header>
-    <main class="container"><?= $data['content']; ?>
+    <main <?= $data['main_container']; ?>><?= $data['content']; ?>
     </main>
     <footer class="main-footer">
-        <nav class="nav">
-            <ul class="nav__list container">
-                <?php foreach ($data['categories_list'] as $val) : ?>
-                <li class="nav__item">
-                    <a href="all-lots.html"><?=$val?></a>
-                </li>
-                <?php endforeach; ?>
-            </ul>
-        </nav>
+    <?= $data['categories']; ?>
         <div class="main-footer__bottom container">
             <div class="main-footer__copyright">
                 <p>© 2023, YetiCave</p>
