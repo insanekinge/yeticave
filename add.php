@@ -4,10 +4,10 @@ require 'app/common.php';
 
 
 // запрет для незарегистрированный
-// if (! isset($_SESSION['user'])) {
-//     http_response_code(403);
-//     exit();
-// }
+if (! isset($_SESSION['user'])) {
+    http_response_code(403);
+    exit();
+}
 
 // подключаем данные
 
@@ -47,7 +47,7 @@ foreach ($fields as $k => $val) {
         $add_data[$k]['invalid'] = '';
         $add_data['error'][$k] = '';
     }
-    $add_data[$k]['value'] = $data[$k];
+    // $add_data[$k]['value'] = $data[$k];
 }
 
 // отдельная проверка даты окончания торгов
@@ -86,21 +86,23 @@ else {
         $add_data['error_main'] = '';
     }
     else {
+       
         // запись в БД
         $sql = 'INSERT INTO lots ('
-        . 'name, description, price, step, create_ts, expire_ts, img, '
-        . 'category_id, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        . 'name, description, price, step, img, category, '
+        . 'category_id, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        
         $query_data = [
             $data['lot-name'],
             $data['message'],
             floor($data['lot-rate']),
             floor($data['lot-step']),
-            $time,
-            $data['lot-date'],
             $_SESSION['url'],
             $data['category'],
             $_SESSION['user']['id']
         ];
+        // var_dump($_POST);
+
         $result = db_get_prepare_stmt($link, $sql, $query_data);
         if (! $result) {
             $query_errors[] = 'Регистрация невозможна по техническим причинам.';

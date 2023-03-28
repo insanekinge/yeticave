@@ -67,19 +67,17 @@ else {
         $signup_data['error_main'] = '';
     }
     else {
+
+        // var_dump($_POST);
+
+
         // запись в БД
-        $sql = 'INSERT INTO users (name, email, password_hash, contacts, registration_ts) VALUES (?, ?, ?, ?, ?)';
+        $sql = 'INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)';
         $query_data = [
             $data['name'],
             $mail,
             password_hash($data['password'], PASSWORD_DEFAULT),
-            $data['message'],
-            $time
         ];
-        if (isset($_SESSION['url'])) {
-            $sql = str_replace(') VALUES (?, ?, ?, ?, ?)', ', img) VALUES (?, ?, ?, ?, ?, ?)', $sql);
-            $query_data[] = $_SESSION['url'];
-        }
         $result = db_get_prepare_stmt($link, $sql, $query_data);
         if (! $result) {
             $query_errors[] = 'Регистрация невозможна по техническим причинам.';

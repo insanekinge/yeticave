@@ -5,10 +5,11 @@
             <div class="lot-item__image">
                 <img src="<?= $data['lots_list'][$data['id']]['img'] ?>" width="730" height="548" alt="<?= $data['lots_list'][$data['id']]['name'] ?>">
             </div><?php endif; ?>
-            <p class="lot-item__category">Категория: <span><?= $data['categories_list'][$data['lots_list'][$data['id']]['category_id']] ?></span></p>
+            <p class="lot-item__category">Категория: <span><?= $data['lots_list'][$data['id']]['category_id'] ?></span></p>
             <p class="lot-item__description"><?= $data['lots_list'][$data['id']]['description'] ?></p>
         </div>
-        <div class="lot-item__right"><?php if (isset($_SESSION['user']) && $_SESSION['user']['name']) : ?>
+        <div class="lot-item__right">
+            <?php if (isset($_SESSION['user']) && $_SESSION['user']['name']) : ?>
             <div class="lot-item__state">
                 <div class="lot-item__timer timer">
                     <?= remaining($data['expire']); ?>

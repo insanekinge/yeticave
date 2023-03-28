@@ -64,9 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
     else if (! $login_data['error']['e-mail']) {
-        $login_data['error']['password'] = 'Вы не ввели пароль';
+        $login_data['password']['error'] = 'Вы не ввели пароль';
     }
-    if ($login_data['error']['password']) {
+    if ($login_data['password']['error']) {
         $login_data['password']['invalid'] = ' form__item--invalid';
         $error = true;
     }
@@ -79,10 +79,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_POST = [];
     }
     else {
-        header('Location: index.php');
+        header('Location: /');
         exit();
     }
 }
+
 
 // получаем HTML-код тела страницы
 $login_data['categories'] = $layout_data['categories'];

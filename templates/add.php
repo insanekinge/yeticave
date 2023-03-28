@@ -47,7 +47,7 @@
         <div class="form__item form__item--small<?= $data['lot-step']['invalid']; ?>">
             <label for="lot-step">Шаг ставки</label>
             <input id="lot-step" type="text" name="lot-step" placeholder="500" value="<?= $data['lot-step']['value']; ?>">
-            <span class="form__error"><?= $data['error']['lot-step']; ?></span>
+            <span class="form__error"><?= $data['lot-step']['error']; ?></span>
         </div>
         <div class="form__item<?= $data['lot-date']['invalid']; ?>">
             <label for="lot-date">Дата окончания торгов</label>

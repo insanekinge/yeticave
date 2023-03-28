@@ -11,6 +11,8 @@ $lots_query = 'SELECT id, name, price, expire_ts, img, category_id FROM lots LIM
 . $page_items . ' OFFSET ' . $offset;
 require 'app/lots_list.php';
 
+// var_dump($_SESSION['user']);
+
 // получаем HTML-код тела страницы
 $index_data = [
     'categories_list' => $categories_list,

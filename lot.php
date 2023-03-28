@@ -8,9 +8,12 @@ if (! isset($lots_list[$id])){
     exit();
 }
 
-//описание лота
+// var_dump($link);
+
+// описание лота
 $result = mysqli_query($link, 'SELECT description, price FROM lots WHERE id = ' . $id);
-if (! $result) {
+// var_dump($result);
+if (!$result) {
     $query_errors[] = 'Нет доступа к описанию лота.';
 }
 else{
@@ -22,10 +25,7 @@ $price = $lots_list[$id]['price'];
 
 //получаем историю ставок для лота
 $bets = [];
-$result = mysqli_query($link, 'SELECT bets.id, create_ts, price, user_id, name'
-. 'FROM users LEFT JOIN bets on users.id = bets.user_id '
-. 'WHERE lot_id = ' . $id . ' AND bets.id = bets.user_id '
-. 'ORDER BY create_ts DESC');
+$result = mysqli_query($link, 'SELECT bets.id, price, user_id, name FROM users LEFT JOIN bets on users.id = bets.user_id WHERE lot_id = '. $id .' AND bets.id = bets.user_id;');
 if (! $result) {
     $query_errors[] = 'Нет доступа к ставкам.';
 }
@@ -34,7 +34,6 @@ else {
         $bets[] = [
             'name' => $row['name'],
             'price' => $row['price'],
-            'ts' => $row['create_ts']
         ];
         //автор лота не может делать ставку
         if(isset($_SESSION['user']) && $row['user_id'] == $_SESSION['user']['id']){
@@ -90,8 +89,8 @@ $layout_data['content'] = include_template('lot', [
     'bets' => $bets,
     'count' => $count,
     'price' => $price,
-    // 'expire' => $lots_list[$id]['expire_ts'],
-    // 'expired' => ($lots_list[$id]['expire_ts'] - $time > 0) ? false : true,
+    'expire' => $lots_list[$id]['expire_ts'],
+    'expired' => ($lots_list[$id]['expire_ts'] - $time > 0) ? false : true,
     'bet_min' => $bet_min,
     'img' => $img,
     'real' => $real,
