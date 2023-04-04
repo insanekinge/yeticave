@@ -13,6 +13,8 @@ if ($search) {
     // получаем id результатов поиска
     $sql = 'SELECT id FROM lots WHERE MATCH(name, description) AGAINST(? IN BOOLEAN MODE) ORDER BY id DESC';
     $stmt = db_get_prepare_stmt($link, $sql, [$search]);
+    var_dump($layout_data);
+
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     if (! $result) {

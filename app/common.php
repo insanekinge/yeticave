@@ -25,7 +25,7 @@ if(! $result) {
 }
 else{
   while ($row = mysqli_fetch_assoc($result)){
-    $categories_list[$row['id']] = $row['russian_name'];
+    $categories_list[$row['id']] = $row['category_name'];
   }
 }
 

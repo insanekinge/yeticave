@@ -29,7 +29,7 @@ foreach ($fields as $k => $val) {
     if (isset($_POST[$k])) {
         $data[$k] = strip_tags(trim($_POST[$k]));
         if ($data[$k]) {
-            $addd_data[$k]['value'] = $data[$k];
+            $add_data[$k]['value'] = $data[$k];
             if (($k == 'lot-rate' || $k == 'lot-step') && !is_numeric($data[$k])) {
                 $error = true;
             }
@@ -47,7 +47,6 @@ foreach ($fields as $k => $val) {
         $add_data[$k]['invalid'] = '';
         $add_data['error'][$k] = '';
     }
-    // $add_data[$k]['value'] = $data[$k];
 }
 
 // отдельная проверка даты окончания торгов
@@ -81,15 +80,15 @@ if ($error_count) {
     
 }
 else {
-    if (! isset($_POST['lot-name'])) {
-        $add_data['invalid'] = '';
-        $add_data['error_main'] = '';
+    if (!isset($_POST['lot-name'])) {
+        $add_data['invalid'] = 'Не существует имя лота';
+        $add_data['error_main'] = 'Ошибка';
     }
     else {
        
         // запись в БД
         $sql = 'INSERT INTO lots ('
-        . 'name, description, price, step, img, category, '
+        . 'name, description, price, step, img, '
         . 'category_id, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)';
         
         $query_data = [
@@ -101,15 +100,21 @@ else {
             $data['category'],
             $_SESSION['user']['id']
         ];
-        // var_dump($_POST);
+        var_dump($_POST);
 
         $result = db_get_prepare_stmt($link, $sql, $query_data);
+
+        print_r($result);
+        print_r($link);
+        print_r($sql);
+        print_r($query_data);
+        echo implode(', ', $query_data);
+
         if (! $result) {
-            $query_errors[] = 'Регистрация невозможна по техническим причинам.';
+            $query_errors[] = mysqli_error($link);
         }
         else {
             header('Location: lot.php?id=' . mysqli_insert_id($link));
-            unset($_SESSION['url']);
             exit();
         }
     }

@@ -51,6 +51,7 @@ foreach ($bets as $k => $val) {
 }
 
 //добавление ставки
+$bet_min = 0;
 if (isset($_POST['cost'])) {
     $cost_min = $price + $bet_step;
     if (is_numeric($_POST['cost']) && $_POST['cost'] > $cost_min) {
@@ -61,7 +62,7 @@ if (isset($_POST['cost'])) {
     }
     //пишем новую ставку в базу
     $result = mysqli_query($link, 'INSERT INTO bets SET create_ts = ' . $time
-    . ', price = ' . $cost . ', lot_id = ' . $id . ', user_id = ' . $_SESSION['user']['id']);
+    . ', price = ' . $cost . ', lot_id = ' . $id . ',bet_min = ' . $bet_min . ', user_id = ' . $_SESSION['user']['id']);
     if(! $result) {
         $query_errors[] = 'Невозможно записать ставку.';
     }
@@ -90,7 +91,7 @@ $layout_data['content'] = include_template('lot', [
     'count' => $count,
     'price' => $price,
     'expire' => $lots_list[$id]['expire_ts'],
-    'expired' => ($lots_list[$id]['expire_ts'] - $time > 0) ? false : true,
+    'expired' => ($lots_list[$id]['expire_ts'] - $time > 0),
     'bet_min' => $bet_min,
     'img' => $img,
     'real' => $real,
