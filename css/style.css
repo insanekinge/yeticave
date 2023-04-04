@@ -54,6 +54,8 @@ body {
 
 main {
   margin-bottom: 202px;
+  padding-left: 390px;
+  padding-right: 390px;
 }
 
 body {
@@ -115,7 +117,9 @@ input.visually-hidden {
 }
 
 main.container {
-  margin-bottom: 202px;
+    padding-left: 390px;
+    padding-right: 390px;
+    margin-bottom: 202px;
 }
 
 .button {
@@ -900,7 +904,7 @@ input:invalid .form__error{
 
 .form__input-file label {
   display: inline-block;
-  width: 95px;
+  width: 150px;
   box-sizing: border-box;
   margin: 0 0 0 -4px;
   padding: 7px 0 8px 5px;
@@ -909,7 +913,11 @@ input:invalid .form__error{
   text-align: center;
   cursor: pointer;
 }
-
+.preview__remove{
+  height: 30px;
+  width: 30px;
+  margin-bottom: 15px;
+}
 .form__input-file:hover label {
   background-color: #45abde;
   color: #fff;
@@ -1236,4 +1244,13 @@ input:invalid .form__error{
 
 .rates__item--end {
   opacity: 0.4;
+}
+label {
+  display: inline-block;
+  width: 8em;
+  height: 8em;
+  background: silver;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
