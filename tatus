@@ -1,0 +1,83 @@
+[33mcommit 16bd1c3a0b5650424e59673de1853dbd95f883ad[m[33m ([m[1;36mHEAD -> [m[1;32mtask_6[m[33m, [m[1;31morigin/task_5[m[33m, [m[1;32mtask_5[m[33m)[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Tue Apr 4 15:40:44 2023 +0300
+
+    task_5 top point when all error came up
+
+[33mcommit aa5e33a7cb0fbfd8ff1629f9b3054310a39a69d4[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Tue Mar 28 13:21:02 2023 +0300
+
+    task_5 point of refactoring the project
+
+[33mcommit 248ef09b3bb8ffe814ea6d141371b19718392f3f[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Mon Mar 20 11:31:12 2023 +0300
+
+    task_5 mysql add, search mech add, add pagination
+
+[33mcommit 257c00129f44abd76fdbbbdea81519abcfea3fb0[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Mon Mar 13 10:05:14 2023 +0300
+
+    task_5 filereader add
+
+[33mcommit b63f86bd94983683a680ced3864bd0ccd8c84805[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Thu Mar 9 18:07:09 2023 +0300
+
+    task_5 changes
+
+[33mcommit cd64d92f9cfe900da2691b71873672e5a487377e[m[33m ([m[1;31morigin/task_4[m[33m, [m[1;32mtask_4[m[33m)[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Mon Feb 27 17:57:48 2023 +0300
+
+    task_4 remake all the logic
+
+[33mcommit 32a8b4087b1a796e7f4fe1d8294b4eb04925ee6d[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Mon Feb 13 09:12:49 2023 +0300
+
+    task_4 complete
+
+[33mcommit d8b234818ecfa6232d6bc9945b186ae41d3defac[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Mon Feb 6 15:20:32 2023 +0300
+
+    task_4 part 2 complete, add form
+
+[33mcommit cb8f0aa1194cb831776b41689ea0509c1395848d[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Mon Feb 6 14:10:27 2023 +0300
+
+    task_4 part 1 complete, add 404 page
+
+[33mcommit 1378f66f0ce0a27c0d8988eb5775b73709fc1142[m[33m ([m[1;31morigin/task_3[m[33m, [m[1;32mtask_3[m[33m)[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Fri Feb 3 14:58:41 2023 +0300
+
+    task_3 complete without timer in lots
+
+[33mcommit 16d705d63358e10dd26c822c2c5216b6b942a7bf[m[33m ([m[1;31morigin/task_2[m[33m, [m[1;32mtask_2[m[33m)[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Thu Feb 2 17:01:04 2023 +0300
+
+    task_2 part 2 complete, work with price in products
+
+[33mcommit a863faed3acead12157a1f5d8d1cc67e1fed9d0a[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Thu Feb 2 16:22:40 2023 +0300
+
+    task_2 complete, add products and categories
+
+[33mcommit 06b779028cf1ca2abddb83f4de4a06e430319d0e[m[33m ([m[1;31morigin/task_1[m[33m, [m[1;32mtask_1[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Thu Feb 2 14:54:29 2023 +0300
+
+    task_1 add header user tip
+
+[33mcommit 34ea2a1140f13169bc5f55820af776223c9a927f[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Кинге Владислав Дмитриевич <VKinge@synergy.ru>
+Date:   Thu Feb 2 14:00:04 2023 +0300
+
+    task_1 add exist files
